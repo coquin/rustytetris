@@ -14,11 +14,12 @@ impl<T: Clone> Matrix<T> {
     }
 
     pub fn put(&mut self, row: usize, col: usize, value: T) {
-        self.data[row * self.cols + col] = value;
+        // self.data[row * self.cols + col] = value;
     }
 
     pub fn get(&self, row: usize, col: usize) -> &T {
-        return &self.data[row * self.cols + col];
+        let idx = self.index(row, col);
+        return &self.data[idx];
     }
 
     pub fn rows(&self) -> usize {
@@ -27,5 +28,11 @@ impl<T: Clone> Matrix<T> {
 
     pub fn cols(&self) -> usize {
         return self.cols;
+    }
+
+    fn index(&self, row: usize, col: usize) -> usize {
+        assert!(row < self.rows, "row out of bounds");
+        assert!(col < self.cols, "col out of bounds");
+        row * self.cols + col
     }
 }
