@@ -14,7 +14,8 @@ impl<T: Clone> Matrix<T> {
     }
 
     pub fn put(&mut self, row: usize, col: usize, value: T) {
-        // self.data[row * self.cols + col] = value;
+        let idx = self.index(row, col);
+        self.data[idx] = value;
     }
 
     pub fn get(&self, row: usize, col: usize) -> &T {
