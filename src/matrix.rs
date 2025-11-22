@@ -5,11 +5,20 @@ pub struct Matrix<T> {
 }
 
 impl<T: Clone> Matrix<T> {
-    pub fn new(width: usize, height: usize, value: T) -> Self {
+    pub fn from_default(rows: usize, cols: usize, value: T) -> Self {
         Self {
-            rows: width,
-            cols: height,
-            data: vec![value; width * height],
+            rows,
+            cols,
+            data: vec![value; rows * cols],
+        }
+    }
+
+    pub fn from_data(rows: usize, cols: usize, data: Vec<T>) -> Self {
+        assert!(rows * cols == data.len(), "data does not match dimensions");
+        Self {
+            rows: rows,
+            cols: cols,
+            data: data,
         }
     }
 
