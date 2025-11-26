@@ -11,10 +11,22 @@
 // L-tetromino - An L-shape with the “short” block on the right (orange).
 //
 // So the “names” of the Tetris figures are: I, O, T, S, Z, J, L tetrominoes.
-pub struct Tetromino {}
+
+use crate::game::*;
+
+pub struct Tetromino {
+    pub positions: Vec<Position>,
+}
 
 impl Tetromino {
     pub fn o() -> Self {
-        Self {}
+        Self {
+            positions: vec![
+                Position::new(0, 0),
+                Position::new(0, 1),
+                Position::new(1, 0),
+                Position::new(1, 1),
+            ],
+        }
     }
 }
